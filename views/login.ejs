@@ -1,0 +1,26 @@
+  <nav id="navbar">
+   	<div class="logo">
+         <img src="imgs/logo.png" alt="KspStaffE-exam">
+      </div>
+   	  	<ul class="menu">
+   	  		<li><a href="/" class="menu-item">Home</a></li>
+   	  		<li><a href="/reg" class="menu-item">Register</a></li>
+   	  	</ul>
+   </nav>
+    <section id="form">
+       <div class="form-container">
+          <form action="/api/auth/login" method="post">
+             <div class="form-input">
+                <label for="staff-id">Staff Id:</label>
+                <input type="text" name="staffId" id="staff-id" placeholder="KSP/STAFF/DEPARTMENT/NUMBER" required>
+             </div>
+             <div class="form-input">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+             </div>
+             <div class="form-input">
+                <input type="submit" value="Login" id="submit-btn">
+             </div>
+          </form>
+       </div>
+    </section>
