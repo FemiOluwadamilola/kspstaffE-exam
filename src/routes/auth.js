@@ -23,6 +23,21 @@ router.post('/reg', async (req,res) => {
  }
 })
 
+
+// google authentication router
+// router.get('/google', passport.authenticate('google', 
+//   {
+//     scope:['profile']
+//   } 
+//   )
+// )
+
+// google auth failure redirect
+// router.get('/google/callback', passport.authenticate('google', {failureRedirect:'/'}), (req,res) => {
+//    res.redirect('/cbt')
+// })
+
+// local signin authentication router
 router.post('/login', alreadyAuthenticated, (req,res,next) => {
    passport.authenticate('local',{
     successRedirect:'/cbt',
@@ -30,5 +45,6 @@ router.post('/login', alreadyAuthenticated, (req,res,next) => {
     failureFlash:true
   })(req,res,next);
 })
+
 
 module.exports = router;

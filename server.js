@@ -5,7 +5,7 @@ const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require("passport");
-const passportInit = require("./src/config/passport-config");
+const {passportInit} = require("./src/config/passport-config");
 const expressSession = require("express-session");
 const indexRoute = require('./src/routes/index');
 const authRoute = require('./src/routes/auth');
@@ -15,13 +15,15 @@ require('dotenv').config();
 
 
 // database setup
-const DB_URL = process.env.MONGODB_URL;
+const DB_URL = process.env.DB_URL;
 mongoose.connect(DB_URL).then(() => console.log('database running'))
 .catch(err => console.log(err.message));
 
-// passport init
+// passport local init
 passportInit(passport);
 
+// passport google init
+// passportGoogleInit(passport);
 // cors
 app.use(cors({
   origin:'*'

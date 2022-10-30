@@ -5,10 +5,18 @@
    	  	<ul class="menu">
    	  		<li><a href="/logout" class="menu-item">Logout</a></li>
    	  	</ul>
-   </nav>
+</nav>
+
+<div class="pop-notification">
+   <div class="pop-content">
+      <h2>Hello and welcome to ksp staff E-examination portal, please note that the duration of this exam is 25 minutes failure to be done before the end of time will lead to automatic submition of the exam!. with this information in mind, please click on the button below to begin examination.</h2>
+     <button class="btn cancel-pop">Begin exam!</button>
+   </div>
+</div>
+
    <section id="quiz">
     <div class="timer">
-       <h4>Your Examination time remaining <span id="time">01:00</span> minutes!</h4>
+       <h4>Your Examination time remaining <span id="time">25:00</span> minutes!</h4>
     </div>
      <div class="quiz-container" id="quiz">
       <div class="quiz-header">
@@ -35,6 +43,6 @@
           </li>
         </ul>
       </div>
-      <button id="submit">Submit</button>
+      <button id="submit" class="btn">Next</button>
     </div>
    </section>

@@ -28,7 +28,6 @@ router.get('/cbt', ensureAuthenticated, (req,res) => {
 })
 
 router.get('/logout',(req,res) => {
-   // req.flash('success_msg','You are logged out');
    res.status(200).redirect('/')
 })
 

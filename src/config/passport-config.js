@@ -2,7 +2,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const Cryptojs = require('crypto-js');
 const User = require('../models/User');
 
-const staffAuthentication = async (staffId,password,done) =>{
+const LocalStaffAuthentication = async (staffId,password,done) =>{
  try{
  	const staff = await User.findOne({staffId});
  	if(!staff){
@@ -21,8 +21,9 @@ const staffAuthentication = async (staffId,password,done) =>{
  }
 }
 
-const passportInit = (passport) => {
-	passport.use(new LocalStrategy({usernameField:'staffId'}, staffAuthentication))
+
+const passportLocalAuthInit = (passport) => {
+	passport.use(new LocalStrategy({usernameField:'staffId'}, LocalStaffAuthentication))
 
 	passport.serializeUser((staff,done) => {
 		done(null, staff.id)
@@ -35,4 +36,6 @@ const passportInit = (passport) => {
 	})
 }
 
-module.exports = passportInit;
+module.exports = {
+	passportInit:passportLocalAuthInit,
+};

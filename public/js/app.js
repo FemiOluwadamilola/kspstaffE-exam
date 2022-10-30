@@ -47,6 +47,8 @@ const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
 const submitBtn = document.getElementById('submit');
 const modalbox = document.getElementById('myModal');
+const popUp = document.querySelector(".pop-notification");
+const cancelPopBtn = document.querySelector('.cancel-pop');
 
 let currentQuiz = 0
 let score = 0
@@ -55,9 +57,7 @@ loadQuiz()
 
 function loadQuiz() {
     deselectAnswers()
-
     const currentQuizData = quizData[currentQuiz]
-
     questionEl.innerText = currentQuizData.question
     a_text.innerText = currentQuizData.a
     b_text.innerText = currentQuizData.b
@@ -93,16 +93,23 @@ submitBtn.addEventListener('click', () => {
 
         if(currentQuiz < quizData.length) {
             loadQuiz()
+
         } else {
             quiz.innerHTML = `
-                <h2>please visit your mailBox for the exam score! thanks</h2>
-
-                <button onclick="location.assign('/logout')">logout</button>
+                 <h2>congradulations you've successfully completed the Exam. please click on the submit button below to get your exam score!</h2>
+                <button onclick="quizScore()">submit</button>
             `;
         }
     }
 })
 
+
+const quizScore = () => {
+     quiz.innerHTML = `
+        <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+        <button onclick="location.assign('/logout')">logout</button>
+     `;
+}
 
 // countdown timer
 function startTimer(duration, display) {
@@ -124,8 +131,19 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-window.onload = function () {
-    var fiveMinutes = 60 * 1,
-        display = document.querySelector('#time');
+
+cancelPopBtn.addEventListener('click', function(e){
+    popUp.style.display = 'none';
+      var fiveMinutes = 1500 * 1,
+      display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
+    e.preventDefault()
+})
+
+
+window.onload = function () {
+    var fiveMinutes = 1500 * 1,
+        display = document.querySelector('#time');
+    // startTimer(fiveMinutes, display);
+
 };
